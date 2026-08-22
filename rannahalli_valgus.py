@@ -241,12 +241,23 @@ def millised_panna_polema_kustu(bronnid_list):
         print(f"Lülitan sisse väljak {valjak} (bronn algas praegu)")
         lulita_valgustust(valjak)
 
-    # Lülitame VÄLJA
+    # Lülitame VÄLJA ja eemaldame töödeldud bronnid
+    tehtud_bronnid = []
     for valjak in set(polema_kustu[1]):
         print(f"Lülitan välja väljak {valjak} (bronn lõppes just praegu)")
         pohiosa = int(str(valjak) + str(valjak))
         lulita_valgustust(pohiosa) 
         millised_polevad[pohiosa] = False
+
+            # Märgime selle broneeringu tehtuks, et seda enam ei kontrollitaks
+        for bronn in bronnid_list:
+            if bronn[0] == valjak and bronn[2] <= praegune_aeg:
+                tehtud_bronnid.append(bronn)
+    # Kustutame globaalsest mälust aegunud ja töödeldud broneeringud
+    for b in tehtud_bronnid:
+        if b in bronnid:
+            bronnid.remove(b)
+
 
     # Lülitame välja ühisosad, mille mõlemad põhiosad on kustunud
     for uhisos, (pohiosa1, pohiosa2) in UHISOSADE_POHIOSAD.items():
