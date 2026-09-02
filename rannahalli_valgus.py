@@ -93,6 +93,8 @@ def loeme_bronnid_jsonist(broneeringute_list):
             return dt.astimezone(ZoneInfo('Europe/Tallinn'))
         return None
 
+    # Eraldame API-st tulnud kehtivad tänased broneeringud
+    aktiivsed_api_bronnid = []
     for andmed in broneeringute_list:
         court = andmed.get('court', {})
         nime_digits = ''.join(filter(str.isdigit, str(court.get('name') if isinstance(court, dict) else court)))
@@ -109,16 +111,29 @@ def loeme_bronnid_jsonist(broneeringute_list):
         if not (algus_dt and lopp_dt):
             continue
 
-        # Lisame arvesse AINULT tänased broneeringud
         if algus_dt.date() == tana:
             kirje = (
                 valjaku_nr,
                 (algus_dt - timedelta(minutes=VALGUSTUSE_VIITEAEG)).strftime('%H:%M'),
                 (lopp_dt + timedelta(minutes=VALGUSTUSE_VIITEAEG)).strftime('%H:%M')
             )
-            # LISAME MÄLUPUHVRISSE (kui seda seal veel pole)
-            if kirje not in bronnid:
-                bronnid.append(kirje)
+            aktiivsed_api_bronnid.append(kirje)
+
+    # TUHISTAMISE KONTROLL (ainult tulevaste broneeringute puhul!)
+    praegune_aeg = datetime.now().strftime('%H:%M')
+    for eemaldatav in bronnid[:]:
+        valjak, algus, lopp = eemaldatav[0], eemaldatav[1], eemaldatav[2]
+        
+        # Kui broneering EI OLE veel alkanud (algus > praegune_aeg) 
+        # ja seda enam API vasteks pole, siis on see TÜHISTATUD.
+        if algus > praegune_aeg and eemaldatav not in aktiivsed_api_bronnid:
+            print(f"HOIATUS: Tulevikubroneering väljakule {valjak} ({algus}-{lopp}) tühistati ja eemaldati mälust.")
+            bronnid.remove(eemaldatav)
+
+    # Lisame uued tulnud broneeringud mälupuhvrisse
+    for kirje in aktiivsed_api_bronnid:
+        if kirje not in bronnid:
+            bronnid.append(kirje)
 
     return bronnid
 
