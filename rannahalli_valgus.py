@@ -20,7 +20,7 @@ VALJAKUTE_ID_TABEL = {
     3: "48858248-1f08-4b8d-a644-997295710f08",
     33: "ed6e2005-2138-4d9a-98aa-135606a8621e",
     4: "3e941d49-ce4b-47dd-8b0c-a8b04ec26267",
-    44: "3e941d49-ce4b-47dd-8b0c-a8b04ec26267", 
+    44: "3e941d49-ce4b-47dd-8b0c-a8b04ec26267", #Sama ID, mis 4, sest 4. väljakul pole eraldi ühisosa
     5: "e2b6cc90-6c25-48d9-89ce-ea364dab258c", 
     55: "5df5aa07-9eac-45ae-8c9e-cf9769d7ff5c",
     56: "77c469e7-4f20-483a-8aea-bf00d9886314",
