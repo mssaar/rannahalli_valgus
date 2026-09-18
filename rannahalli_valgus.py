@@ -11,16 +11,17 @@ CONTROLLER_IP = "192.168.0.250"
 TRIDONIC_AUTH_KEY = "wHNHcJk4iAghu6mBGaMSdVIEZ1I8/en79LV44mpu0pI="
 
 VALJAKUTE_ID_TABEL = { 
-    1: "94194d6a-6f65-4260-b2a8-d7492a637b2d", 
-    11: "cfc22ed0-e34c-4af6-9136-3085e8cf2010", 
-    12: "dd61267a-f16d-4f67-83b1-a88b07d261e1",
+    1: "94194d6a-6f65-4260-b2a8-d7492a637b2d",  #SendEvents esimene pikem kood ehk see mis 0: 
+    12: "dd61267a-f16d-4f67-83b1-a88b07d261e1", 
+    11: "cfc22ed0-e34c-4af6-9136-3085e8cf2010",
     2: "08cdcc21-7689-4933-99aa-1fabf0f382df",
     22: "e35da91e-9a58-4d1c-b7a6-ce782b0a5c19",
-    23: "20ee01e5-de3e-46c8-adb6-4cbf6137e1fb",
+    23: "4b6c55c3-4c6b-44be-9a2a-cfd55d2120dc",
     3: "48858248-1f08-4b8d-a644-997295710f08",
     33: "ed6e2005-2138-4d9a-98aa-135606a8621e",
+    34: "0c5b4baf-38ed-4e34-b974-a0be9af5a163",
     4: "3e941d49-ce4b-47dd-8b0c-a8b04ec26267",
-    44: "3e941d49-ce4b-47dd-8b0c-a8b04ec26267", #Sama ID, mis 4, sest 4. väljakul pole eraldi ühisosa
+    44: "982c7b7c-66ae-4232-90eb-96878577ec08", 
     5: "e2b6cc90-6c25-48d9-89ce-ea364dab258c", 
     55: "5df5aa07-9eac-45ae-8c9e-cf9769d7ff5c",
     56: "77c469e7-4f20-483a-8aea-bf00d9886314",
